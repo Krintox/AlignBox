@@ -18,24 +18,6 @@ The application is built using the following technologies:
 
 ## File Structure
 
-Your_Project_Folder/
-├── public/
-│   ├── index.html
-│   ├── read.html
-│   ├── styles.css
-│   └── images/
-│       ├── image1.jpg
-│       ├── image2.png
-│       └── ...
-├── backend/
-│   ├── app.js
-│   ├── package.json
-│   └── node_modules/
-└── database/
-    ├── mysql_connection.js
-    ├── participants.js
-    └── participants_data.sql
-
 - `public/`: Contains the frontend files, including the registration and read pages along with the CSS styles and image files.
 
 - `backend/`: Contains the backend server code implemented using Node.js and Express.js. The `app.js` file is the main server file.
@@ -74,5 +56,5 @@ Follow the steps below to run the application locally:
 5. Start the Backend Server:
    - While inside the `backend` folder, start the backend server using:
      ```
-     node app.js
+     npm start
      ```
