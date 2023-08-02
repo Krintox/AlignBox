@@ -34,7 +34,7 @@ $(document).ready(function() {
         formData.append("image", image);
 
         $.ajax({
-            url: "/register",
+            url: "http://localhost:3000/register",
             method: "POST",
             data: formData,
             processData: false,

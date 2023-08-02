@@ -1,15 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Participant Details</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participant Analytics</title>
+    <link href="./read.css" rel="stylesheet">
 </head>
+
 <body>
-    <div class="container">
-        <h1>Participant Details</h1>
-        <div id="participantDetails"></div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="scripts.js"></script>
+    <h1>Participant Analytics</h1>
+    <div id="analytics"></div>
+    <!-- <img src=""> -->
+    <script>
+        fetch('http://localhost:3000/participants')
+            .then(response => response.json())
+            .then(data => {
+                const analyticsDiv = document.getElementById('analytics');
+                if (data.length === 0) {
+                    analyticsDiv.innerHTML = '<p>No participants registered yet.</p>';
+                } else {
+                    let html = '<table><tr><th>Name</th><th>Email</th><th>Image</th></tr>';
+                    data.forEach(participant => {
+                        html += `<tr><td>${participant.name}</td><td>${participant.email}</td><td><img src="../backend/public/images/${participant.image}" width="100px" height="100px"></td></tr>`;
+                    });
+                    html += '</table>';
+                    analyticsDiv.innerHTML = html;
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching participant data:', error);
+                const analyticsDiv = document.getElementById('analytics');
+                analyticsDiv.innerHTML = '<p>Failed to fetch participant data.</p>';
+            });
+    </script>
 </body>
+
 </html>
